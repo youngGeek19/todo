@@ -1,5 +1,8 @@
 build:
-	go mod tidy
+	docker compose build
 
 run:
-	go run cmd/todo/main.go
+	docker compose up
+
+docker:
+	docker compose run --service-ports web bash
