@@ -4,6 +4,7 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/youngGeek19/todo/internal/config"
+	get_time "github.com/youngGeek19/todo/internal/delivery/time"
 	"log/slog"
 	"net/http"
 	"os"
@@ -29,6 +30,8 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 	router.Use(middleware.URLFormat)
+
+	router.Get("/time", get_time.Time())
 
 	log.Info("Starting the server", slog.String("address", cfg.HTTPServer.Address))
 
